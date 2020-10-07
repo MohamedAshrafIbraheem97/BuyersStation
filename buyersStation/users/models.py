@@ -8,4 +8,4 @@ class User(models.Model):
     user_type = models.CharField(max_length= 1,default= 0)
 
     def __str__(self):
-        return self.user_name , self.email
+        return self.user_name

@@ -1,0 +1,43 @@
+{% extends 'products/base.html' %}
+{%block title%} Home Page {% endblock title%}
+{% block index%}
+
+<h1>The products</h1>
+<hr>
+{% if products %}
+
+
+    <div class="row">
+        {% for product in products %}
+        <div class="col-sm-4">
+            <div class="card" >
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{ product.product_name }} - 
+                    {% if product.new_price  %}<s>{{ product.old_price}} LE</s> - {{product.new_price}}
+                    {% else %} {{ product.old_price}} LE {% endif %}
+                    </h5>
+                <p class="card-text">{{ product.description }}</p>
+                <a href="{% url 'products:details' product.id %}" class="btn btn-primary">Details</a>
+                <a href="#" class="card-link">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  
+{% endif %}
+
+
+
+<!-- {% if products %}
+<h1>The products</h1>
+
+<ul>
+{% for product in products %}
+    <li><a href="{% url 'products:details' product.id %}">{{ product.product_name }}</a></li>
+{% endfor %}
+</ul>
+{% endif %} -->
+{% endblock index%}
+

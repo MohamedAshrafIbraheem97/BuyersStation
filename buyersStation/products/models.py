@@ -6,13 +6,13 @@ class Product(models.Model):
     product_name = models.CharField(max_length=100)
     description = models.TextField(blank= True)
     old_price = models.FloatField()
-    new_price = models.FloatField(blank= True)
+    new_price = models.FloatField(blank= True, null= True)
     creation_date = models.DateTimeField(auto_now_add= True)
     quantity = models.IntegerField()
     seller = models.ForeignKey(User, on_delete= models.CASCADE)
 
     def __str__(self):
-        return self.product_name, self.description
+        return (self.product_name , self.description)
 
 
 class review(models.Model):
@@ -22,5 +22,5 @@ class review(models.Model):
     rate = models.IntegerField()
 
     def __str__(self):
-        return self.product, self.user ,self.comment, self.rate
+        return self.product
 
